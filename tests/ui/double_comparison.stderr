@@ -73,5 +73,125 @@ error: this binary expression can be simplified
 LL |     if x >= y && x != y {
    |        ^^^^^^^^^^^^^^^^ help: try: `x > y`
 
-error: aborting due to 12 previous errors
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:63:13
+   |
+LL |     let _ = x == y || a || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || a`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:64:13
+   |
+LL |     let _ = x != y && a && x <= y;
+   |             ^^^^^^^^^^^^^^^^^^^^^ help: try: `x < y && a`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:65:13
+   |
+LL |     let _ = x == y || a || b || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || a || b`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:68:13
+   |
+LL |     let _ = x == y || z() || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:69:13
+   |
+LL |     let _ = x != y && z() && x <= y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x < y && z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:70:13
+   |
+LL |     let _ = x == y || z() || x < y || z();
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z() || z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:71:13
+   |
+LL |     let _ = x == y || w() || z() || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || w() || z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:72:13
+   |
+LL |     let _ = w() || x == y || z() || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `w() || x <= y || z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:75:13
+   |
+LL |     let _ = x == y || x < y || z();
+   |             ^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:76:13
+   |
+LL |     let _ = z() || x == y || x < y;
+   |             ^^^^^^^^^^^^^^^^^^^^^^ help: try: `z() || x <= y`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:109:13
+   |
+LL |     let _ = (x == y) || (x < y);
+   |             ^^^^^^^^^^^^^^^^^^^ help: try: `x <= y`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:110:13
+   |
+LL |     let _ = x == y || (x < y || (z() || w()));
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z() || w()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:111:13
+   |
+LL |     let _ = ((x == y || x < y) || z()) || w();
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z() || w()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:112:13
+   |
+LL |     let _ = x == y || (x < y || z()) || w();
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `x <= y || z() || w()`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:115:13
+   |
+LL |     let _ = (x <= y && x >= y) || z();
+   |             ^^^^^^^^^^^^^^^^^^ help: try: `x == y`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:116:13
+   |
+LL |     let _ = (x == y || x < y) && z();
+   |             ^^^^^^^^^^^^^^^^^ help: try: `x <= y`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:119:21
+   |
+LL |     let _ = w() && ((x == y || x < y || z()) && x > y);
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `(x <= y || z())`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:120:14
+   |
+LL |     let _ = !(x == y || x < y || z());
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `(x <= y || z())`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:121:13
+   |
+LL |     let _ = (x != y && z() && x <= y) || w();
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `(x < y && z())`
+
+error: this binary expression can be simplified
+  --> tests/ui/double_comparison.rs:153:22
+   |
+LL |     let _ = or_true!(a == b || a < b);
+   |                      ^^^^^^^^^^^^^^^ help: try: `a <= b`
+
+error: aborting due to 32 previous errors
 
